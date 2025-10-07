@@ -67,13 +67,11 @@ onAuthStateChanged(auth, (user) => {
     authContainer.style.display = "none";
     appContainer.style.display = "flex";
     logoutContainer.style.display = "block";
-    authStatus.textContent = `Logged in as: ${user.email}`;
     initializeAppContent(user.uid);
   } else {
     authContainer.style.display = "block";
     appContainer.style.display = "none";
     logoutContainer.style.display = "none";
-    authStatus.textContent = "Logged out";
   }
 });
 
