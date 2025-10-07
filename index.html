@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hadith Story App</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Side by side layout */
+    .container {
+      display: flex;
+      gap: 20px;
+      margin: 10px;
+    }
+    #hadith-panel, #story-panel {
+      flex: 1;
+      border: 1px solid #ccc;
+      padding: 10px;
+      overflow-y: auto;
+      max-height: 80vh;
+    }
+  </style>
+</head>
+<body>
+  <!-- Authentication Section -->
+  <div id="auth-container">
+    <h2>Login or Register</h2>
+    <input type="email" id="email" placeholder="Email"><br>
+    <input type="password" id="password" placeholder="Password"><br>
+    <button id="loginBtn">Login</button>
+    <button id="registerBtn">Register</button>
+    <p id="auth-status"></p>
+  </div>
+
+  <!-- Logout Button (always visible when logged in) -->
+  <div id="logout-container" style="display:none; text-align:right; margin:10px;">
+    <button id="logoutBtn">Logout</button>
+  </div>
+
+  <!-- Main App -->
+  <div class="container" style="display:none;">
+    <div id="hadith-panel"></div>
+    <div id="story-panel"></div>
+  </div>
+
+  <!-- Cover Page -->
+  <div id="cover-page" style="display:none; text-align:center;">
+    <img id="cover-image" src="" alt="Story Cover" style="max-width:80%; height:auto;" />
+    <br>
+    <button id="cover-read-btn">READ</button>
+  </div>
+
+  <!-- Firebase (v11 Modular SDK) -->
+  <script type="module" src="script.js"></script>
+</body>
+</html>

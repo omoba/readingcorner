@@ -1,0 +1,152 @@
+[
+  {
+    "storyId": 0,
+    "questions": [
+      {"question": "Where were Amir and Amirah camping?", "options": ["By the forest", "Near a river", "In the city"], "answer": "Near a river"},
+      {"question": "What did Amir do carelessly?", "options": ["Spilled water", "Forgot his bag", "Dropped his food"], "answer": "Spilled water"},
+      {"question": "Who reminded Amir about wasting water?", "options": ["His mother", "Amirah", "Teacher Fatima"], "answer": "Amirah"},
+      {"question": "What hadith did Amirah recall?", "options": ["Do not waste water", "Speak the truth", "Pray on time"], "answer": "Do not waste water"},
+      {"question": "How did Amir react after being reminded?", "options": ["Ignored it", "Stopped wasting water", "Left the river"], "answer": "Stopped wasting water"},
+      {"question": "What lesson did Amir learn?", "options": ["Water is precious", "Play more games", "Camping is fun"], "answer": "Water is precious"},
+      {"question": "Why should water not be wasted?", "options": ["It is expensive", "It is a blessing from Allah", "It is easy to find"], "answer": "It is a blessing from Allah"},
+      {"question": "When should water be used carefully?", "options": ["Only at home", "Even by a flowing river", "Only at school"], "answer": "Even by a flowing river"},
+      {"question": "What feeling did Amir have in the evening?", "options": ["Sadness", "Embarrassment and reflection", "Excitement"], "answer": "Embarrassment and reflection"},
+      {"question": "Who praised Amir and Amirah?", "options": ["Their teacher", "Their mother", "Their friend"], "answer": "Their mother"}
+    ]
+  },
+  {
+    "storyId": 1,
+    "questions": [
+      {"question": "Who had a disagreement over a game?", "options": ["Bilal and Hasan", "Amir and Hasan", "Layla and Sara"], "answer": "Bilal and Hasan"},
+      {"question": "How long did they avoid each other?", "options": ["One day", "Three days", "Several days"], "answer": "Several days"},
+      {"question": "What hadith did Bilal remember?", "options": ["Do not waste water", "Do not boycott your brother more than three days", "Help others in difficulty"], "answer": "Do not boycott your brother more than three days"},
+      {"question": "Who greeted first to reconcile?", "options": ["Bilal", "Hasan", "Amirah"], "answer": "Bilal"},
+      {"question": "What was the result of greeting?", "options": ["They fought again", "Their sin was forgiven", "They argued more"], "answer": "Their sin was forgiven"},
+      {"question": "What lesson was learned?", "options": ["Boycott friends", "Forgive and greet each other", "Ignore disagreements"], "answer": "Forgive and greet each other"},
+      {"question": "How did they feel after reconciling?", "options": ["Happy and relieved", "Angry", "Confused"], "answer": "Happy and relieved"},
+      {"question": "What is important in friendship?", "options": ["Ignoring mistakes", "Greeting and forgiving", "Winning games"], "answer": "Greeting and forgiving"},
+      {"question": "What hadith encourages reconciliation?", "options": ["Do not waste water", "Do not boycott your brother more than three days", "Be humble"], "answer": "Do not boycott your brother more than three days"},
+      {"question": "Who praised them after reconciling?", "options": ["Teacher", "Mother", "No one"], "answer": "Teacher"}
+    ]
+  },
+  {
+    "storyId": 2,
+    "questions": [
+      {"question": "Who reminded Amirah about arrogance?", "options": ["Hasan", "Teacher", "Her mom"], "answer": "Hasan"},
+      {"question": "What did Amirah realize about herself?", "options": ["She was humble", "She had been arrogant", "She was tired"], "answer": "She had been arrogant"},
+      {"question": "What hadith did she recall?", "options": ["He who has an ant’s weight of arrogance will not enter Paradise", "Do not waste water", "Help others in difficulty"], "answer": "He who has an ant’s weight of arrogance will not enter Paradise"},
+      {"question": "How did Amirah apologize?", "options": ["To her teacher", "To her friends", "To her sister"], "answer": "To her friends"},
+      {"question": "What did Amirah do after apologizing?", "options": ["Boasted more", "Helped friends recite surahs", "Played alone"], "answer": "Helped friends recite surahs"},
+      {"question": "What is the main lesson?", "options": ["Be humble", "Always be proud", "Play more games"], "answer": "Be humble"},
+      {"question": "What did humility help Amirah understand?", "options": ["Friendship is easy", "Arrogance prevents Paradise", "Winning is important"], "answer": "Arrogance prevents Paradise"},
+      {"question": "Who noticed her arrogance first?", "options": ["Hasan", "Layla", "Teacher"], "answer": "Hasan"},
+      {"question": "How big can arrogance be to affect Paradise?", "options": ["As big as a mountain", "As small as an ant", "As big as a coin"], "answer": "As small as an ant"},
+      {"question": "What did Amirah focus on after learning the lesson?", "options": ["Helping friends", "Playing alone", "Boasting"], "answer": "Helping friends"}
+    ]
+  },
+  {
+    "storyId": 3,
+    "questions": [
+      {"question": "Who helped Sara with her bag?", "options": ["Layla", "Amirah", "Amir"], "answer": "Layla"},
+      {"question": "What difficulty was eased?", "options": ["Homework", "Carrying a bag", "Cleaning classroom"], "answer": "Carrying a bag"},
+      {"question": "What hadith did Layla follow?", "options": ["Help one in difficulty", "Do not waste water", "Pray on time"], "answer": "Help one in difficulty"},
+      {"question": "What was the result for Sara?", "options": ["Felt happy", "Felt sad", "Felt angry"], "answer": "Felt happy"},
+      {"question": "What blessing did Layla feel?", "options": ["Peace and happiness", "Tiredness", "Hunger"], "answer": "Peace and happiness"},
+      {"question": "What is the lesson of the story?", "options": ["Helping others brings rewards", "Ignoring others", "Playing alone"], "answer": "Helping others brings rewards"},
+      {"question": "Who benefits when you ease someone's difficulty?", "options": ["Only them", "Both you and them", "No one"], "answer": "Both you and them"},
+      {"question": "When did Layla help Sara?", "options": ["During lunch", "One day", "During recess"], "answer": "One day"},
+      {"question": "What should one remember when helping others?", "options": ["It brings reward from Allah", "It tires you", "It is optional"], "answer": "It brings reward from Allah"},
+      {"question": "What did Sara do after receiving help?", "options": ["Thanked Layla", "Ignored her", "Ran away"], "answer": "Thanked Layla"}
+    ]
+  },
+  {
+    "storyId": 4,
+    "questions": [
+      {"question": "Who had a disagreement over a game?", "options": ["Bilal and Hasan", "Amir and Hasan", "Layla and Sara"], "answer": "Bilal and Hasan"},
+      {"question": "How long did they avoid each other?", "options": ["One day", "Three days", "Several days"], "answer": "Several days"},
+      {"question": "What hadith did Bilal remember?", "options": ["Do not waste water", "Do not boycott your brother more than three days", "Help others in difficulty"], "answer": "Do not boycott your brother more than three days"},
+      {"question": "Who greeted first to reconcile?", "options": ["Bilal", "Hasan", "Amirah"], "answer": "Bilal"},
+      {"question": "What was the result of greeting?", "options": ["They fought again", "Their sin was forgiven", "They argued more"], "answer": "Their sin was forgiven"},
+      {"question": "What lesson was learned?", "options": ["Boycott friends", "Forgive and greet each other", "Ignore disagreements"], "answer": "Forgive and greet each other"},
+      {"question": "How did they feel after reconciling?", "options": ["Happy and relieved", "Angry", "Confused"], "answer": "Happy and relieved"},
+      {"question": "What is important in friendship?", "options": ["Ignoring mistakes", "Greeting and forgiving", "Winning games"], "answer": "Greeting and forgiving"},
+      {"question": "What hadith encourages reconciliation?", "options": ["Do not waste water", "Do not boycott your brother more than three days", "Be humble"], "answer": "Do not boycott your brother more than three days"},
+      {"question": "Who praised them after reconciling?", "options": ["Teacher", "Mother", "No one"], "answer": "Teacher"}
+    ]
+  },
+  {
+    "storyId": 5,
+    "questions": [
+      {"question": "Who reminded Amirah about arrogance?", "options": ["Hasan", "Teacher", "Her mom"], "answer": "Hasan"},
+      {"question": "What did Amirah realize about herself?", "options": ["She was humble", "She had been arrogant", "She was tired"], "answer": "She had been arrogant"},
+      {"question": "What hadith did she recall?", "options": ["He who has an ant’s weight of arrogance will not enter Paradise", "Do not waste water", "Help others in difficulty"], "answer": "He who has an ant’s weight of arrogance will not enter Paradise"},
+      {"question": "How did Amirah apologize?", "options": ["To her teacher", "To her friends", "To her sister"], "answer": "To her friends"},
+      {"question": "What did Amirah do after apologizing?", "options": ["Boasted more", "Helped friends recite surahs", "Played alone"], "answer": "Helped friends recite surahs"},
+      {"question": "What is the main lesson?", "options": ["Be humble", "Always be proud", "Play more games"], "answer": "Be humble"},
+      {"question": "What did humility help Amirah understand?", "options": ["Friendship is easy", "Arrogance prevents Paradise", "Winning is important"], "answer": "Arrogance prevents Paradise"},
+      {"question": "Who noticed her arrogance first?", "options": ["Hasan", "Layla", "Teacher"], "answer": "Hasan"},
+      {"question": "How big can arrogance be to affect Paradise?", "options": ["As big as a mountain", "As small as an ant", "As big as a coin"], "answer": "As small as an ant"},
+      {"question": "What did Amirah focus on after learning the lesson?", "options": ["Helping friends", "Playing alone", "Boasting"], "answer": "Helping friends"}
+    ]
+  },
+  {
+    "storyId": 6,
+    "questions": [
+      {"question": "Who helped Sara with her bag?", "options": ["Layla", "Amirah", "Amir"], "answer": "Layla"},
+      {"question": "What difficulty was eased?", "options": ["Homework", "Carrying a bag", "Cleaning classroom"], "answer": "Carrying a bag"},
+      {"question": "What hadith did Layla follow?", "options": ["Help one in difficulty", "Do not waste water", "Pray on time"], "answer": "Help one in difficulty"},
+      {"question": "What was the result for Sara?", "options": ["Felt happy", "Felt sad", "Felt angry"], "answer": "Felt happy"},
+      {"question": "What blessing did Layla feel?", "options": ["Peace and happiness", "Tiredness", "Hunger"], "answer": "Peace and happiness"},
+      {"question": "What is the lesson of the story?", "options": ["Helping others brings rewards", "Ignoring others", "Playing alone"], "answer": "Helping others brings rewards"},
+      {"question": "Who benefits when you ease someone's difficulty?", "options": ["Only them", "Both you and them", "No one"], "answer": "Both you and them"},
+      {"question": "When did Layla help Sara?", "options": ["During lunch", "One day", "During recess"], "answer": "One day"},
+      {"question": "What should one remember when helping others?", "options": ["It brings reward from Allah", "It tires you", "It is optional"], "answer": "It brings reward from Allah"},
+      {"question": "What did Sara do after receiving help?", "options": ["Thanked Layla", "Ignored her", "Ran away"], "answer": "Thanked Layla"}
+    ]
+  },
+  {
+    "storyId": 7,
+    "questions": [
+      {"question": "Who had a disagreement over a game?", "options": ["Bilal and Hasan", "Amir and Hasan", "Layla and Sara"], "answer": "Bilal and Hasan"},
+      {"question": "How long did they avoid each other?", "options": ["One day", "Three days", "Several days"], "answer": "Several days"},
+      {"question": "What hadith did Bilal remember?", "options": ["Do not waste water", "Do not boycott your brother more than three days", "Help others in difficulty"], "answer": "Do not boycott your brother more than three days"},
+      {"question": "Who greeted first to reconcile?", "options": ["Bilal", "Hasan", "Amirah"], "answer": "Bilal"},
+      {"question": "What was the result of greeting?", "options": ["They fought again", "Their sin was forgiven", "They argued more"], "answer": "Their sin was forgiven"},
+      {"question": "What lesson was learned?", "options": ["Boycott friends", "Forgive and greet each other", "Ignore disagreements"], "answer": "Forgive and greet each other"},
+      {"question": "How did they feel after reconciling?", "options": ["Happy and relieved", "Angry", "Confused"], "answer": "Happy and relieved"},
+      {"question": "What is important in friendship?", "options": ["Ignoring mistakes", "Greeting and forgiving", "Winning games"], "answer": "Greeting and forgiving"},
+      {"question": "What hadith encourages reconciliation?", "options": ["Do not waste water", "Do not boycott your brother more than three days", "Be humble"], "answer": "Do not boycott your brother more than three days"},
+      {"question": "Who praised them after reconciling?", "options": ["Teacher", "Mother", "No one"], "answer": "Teacher"}
+    ]
+  },
+  {
+    "storyId": 8,
+    "questions": [
+      {"question": "Who reminded Amirah about arrogance?", "options": ["Hasan", "Teacher", "Her mom"], "answer": "Hasan"},
+      {"question": "What did Amirah realize about herself?", "options": ["She was humble", "She had been arrogant", "She was tired"], "answer": "She had been arrogant"},
+      {"question": "What hadith did she recall?", "options": ["He who has an ant’s weight of arrogance will not enter Paradise", "Do not waste water", "Help others in difficulty"], "answer": "He who has an ant’s weight of arrogance will not enter Paradise"},
+      {"question": "How did Amirah apologize?", "options": ["To her teacher", "To her friends", "To her sister"], "answer": "To her friends"},
+      {"question": "What did Amirah do after apologizing?", "options": ["Boasted more", "Helped friends recite surahs", "Played alone"], "answer": "Helped friends recite surahs"},
+      {"question": "What is the main lesson?", "options": ["Be humble", "Always be proud", "Play more games"], "answer": "Be humble"},
+      {"question": "What did humility help Amirah understand?", "options": ["Friendship is easy", "Arrogance prevents Paradise", "Winning is important"], "answer": "Arrogance prevents Paradise"},
+      {"question": "Who noticed her arrogance first?", "options": ["Hasan", "Layla", "Teacher"], "answer": "Hasan"},
+      {"question": "How big can arrogance be to affect Paradise?", "options": ["As big as a mountain", "As small as an ant", "As big as a coin"], "answer": "As small as an ant"},
+      {"question": "What did Amirah focus on after learning the lesson?", "options": ["Helping friends", "Playing alone", "Boasting"], "answer": "Helping friends"}
+    ]
+  },
+  {
+    "storyId": 9,
+    "questions": [
+      {"question": "Who helped Sara with her bag?", "options": ["Layla", "Amirah", "Amir"], "answer": "Layla"},
+      {"question": "What difficulty was eased?", "options": ["Homework", "Carrying a bag", "Cleaning classroom"], "answer": "Carrying a bag"},
+      {"question": "What hadith did Layla follow?", "options": ["Help one in difficulty", "Do not waste water", "Pray on time"], "answer": "Help one in difficulty"},
+      {"question": "What was the result for Sara?", "options": ["Felt happy", "Felt sad", "Felt angry"], "answer": "Felt happy"},
+      {"question": "What blessing did Layla feel?", "options": ["Peace and happiness", "Tiredness", "Hunger"], "answer": "Peace and happiness"},
+      {"question": "What is the lesson of the story?", "options": ["Helping others brings rewards", "Ignoring others", "Playing alone"], "answer": "Helping others brings rewards"},
+      {"question": "Who benefits when you ease someone's difficulty?", "options": ["Only them", "Both you and them", "No one"], "answer": "Both you and them"},
+      {"question": "When did Layla help Sara?", "options": ["During lunch", "One day", "During recess"], "answer": "One day"},
+      {"question": "What should one remember when helping others?", "options": ["It brings reward from Allah", "It tires you", "It is optional"], "answer": "It brings reward from Allah"},
+      {"question": "What did Sara do after receiving help?", "options": ["Thanked Layla", "Ignored her", "Ran away"], "answer": "Thanked Layla"}
+    ]
+  }
+]

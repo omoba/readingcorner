@@ -1,0 +1,261 @@
+/* ---------------- GENERAL ---------------- */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Comic Sans MS', 'Comic Neue', Arial, sans-serif;
+  height: 100%;
+  background: linear-gradient(120deg, #ffccff, #ccffff);
+  transition: background 0.5s ease;
+  overflow: hidden; /* Default: prevent scroll on story/quiz pages */
+}
+
+/* Container for two-panel layout */
+.container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Hadith panel (left) */
+#hadith-panel {
+  width: 35%;
+  background: #fdfd96;
+  padding: 20px;
+  overflow-y: auto;
+  border-right: 5px dashed #ff69b4;
+  border-radius: 0 15px 15px 0;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Left panel header centered */
+#hadith-panel h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-align: center; /* Center the header */
+}
+
+/* Left panel Hadith text left-justified */
+#hadith-panel p {
+  text-align: left;    /* Left justify Hadith text */
+  font-size: 22px;     /* Larger font for readability */
+  line-height: 1.8;    /* Better spacing */
+}
+
+/* Story / Quiz panel (right) */
+#story-panel {
+  width: 65%;
+  padding: 20px;
+  overflow-y: auto;
+  background: #ffebcd;
+  border-left: 5px dashed #ff69b4;
+  border-radius: 15px 0 0 15px;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+  text-align: center; /* Center headers/buttons */
+}
+
+#story-panel h2 {
+  text-align: center;
+}
+
+/* Buttons row */
+.btn-row {
+  margin-top: 20px;
+  text-align: center; /* Center buttons */
+}
+
+.btn-row button {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 16px;
+  background: #ffb347;
+  border: 2px solid #ff69b4;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.btn-row button:hover {
+  background: #ff69b4;
+  transform: scale(1.1);
+  color: #fff;
+}
+
+/* ---------------- HOMEPAGE ---------------- */
+body.homepage-active {
+  overflow-y: auto; /* Allow scrolling on homepage */
+}
+
+body.homepage-active .container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align top so scrolling works */
+  min-height: 100vh;
+  padding: 40px 0;
+}
+
+body.homepage-active #hadith-panel {
+  display: none;
+}
+
+body.homepage-active #story-panel {
+  width: 90%;
+  max-width: 1200px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  overflow: visible;
+}
+
+/* Grid for story tiles */
+.story-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  width: 100%;
+  justify-items: center;
+  padding: 20px;
+}
+
+.story-tile {
+  background: #ffccff;
+  border-radius: 20px;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s, background 0.3s;
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+}
+
+.story-tile:hover {
+  transform: scale(1.05) rotate(-2deg);
+  background: #ffb3ff;
+}
+
+.tile-image {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+
+/* READ imprint */
+.read-imprint {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: #ff0000;
+  color: yellow;
+  padding: 5px 10px;
+  font-weight: bold;
+  border-radius: 15px;
+  font-family: 'Comic Sans MS', cursive;
+  animation: pulse 1s infinite;
+}
+
+/* TEMP stamp animation */
+.stamp-temp {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: #ff0000;
+  color: yellow;
+  padding: 5px 10px;
+  font-weight: bold;
+  border-radius: 15px;
+  font-family: 'Comic Sans MS', cursive;
+  animation: pulse 0.7s ease;
+}
+
+/* Fun pulse animation */
+@keyframes pulse {
+  0% { transform: scale(0.8); opacity: 0.6; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.8; }
+}
+
+/* ---------------- STORY & QUIZ ---------------- */
+.story, 
+.quiz {
+  text-align: left;   /* Left justify content */
+  font-size: 22px;    /* Larger font */
+  line-height: 1.8;
+  color: #333;
+  padding: 15px;
+  background: #fff9e6;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.story h2 {
+  font-size: 28px;
+  color: #ff69b4;
+  margin-bottom: 15px;
+}
+
+.quiz-question {
+  font-size: 24px;
+  font-weight: bold;
+  color: #663399;
+  margin-top: 20px;
+}
+
+.quiz-options label {
+  display: block;
+  font-size: 20px;
+  margin: 8px 0;
+}
+
+/* ---------------- QUIZ HEADER IN RIGHT PANEL ---------------- */
+.quiz-header {
+  font-size: 26px;
+  font-weight: bold;
+  color: #ff69b4;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+
+/* ---------------- COVER PAGE ---------------- */
+#cover-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#cover-page img {
+  width: auto;
+  height: 80%;        /* Fill 80% of page height */
+  max-width: 90%;     /* Ensure it doesn't overflow horizontally */
+  border-radius: 20px;
+  box-shadow: 5px 5px 20px rgba(0,0,0,0.3);
+  margin-bottom: 30px; /* Space for READ button */
+}
+
+
+
+#cover-read-btn {
+  padding: 20px 40px;
+  font-size: 24px;
+  font-weight: bold;
+  background: #ffb347;
+  border: 3px solid #ff69b4;
+  border-radius: 20px;
+  cursor: pointer;
+  animation: pulse 1s infinite;
+}
+
+#cover-read-btn:hover {
+  background: #ff69b4;
+  color: #fff;
+}
