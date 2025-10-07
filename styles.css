@@ -1,355 +1,383 @@
 /* ---------------- GENERAL ---------------- */
 body, html {
-  margin: 0;
-  padding: 0;
-  font-family: 'Comic Sans MS', 'Comic Neue', Arial, sans-serif;
-  height: 100%;
-  background: linear-gradient(120deg, #ffccff, #ccffff);
-  transition: background 0.5s ease;
-  overflow: hidden; /* Default: prevent scroll on story/quiz pages */
+    margin: 0;
+    padding: 0;
+    font-family: 'Comic Sans MS', 'Comic Neue', Arial, sans-serif;
+    height: 100%;
+    transition: background 0.5s ease;
+    overflow-x: hidden; /* Prevents only horizontal scrollbar, allows vertical */
+}
+
+/* --- THE LOGIN PAGE BACKGROUND IMAGE --- */
+body {
+    /* Set home.jpeg as the full-screen background for the default (login) state */
+    background-image: url('images/home.jpeg'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed; /* Keeps image fixed while scrolling (if any) */
 }
 
 /* Container for two-panel layout */
 .container {
-  display: flex;
-  height: 100vh;
-  overflow: hidden;
+    display: flex;
+    height: 100vh; /* Default height for the two-panel view */
+    overflow: hidden; /* Default overflow for the two-panel view */
 }
 
 /* Hadith panel (left) */
 #hadith-panel {
-  width: 35%;
-  background: #fdfd96;
-  padding: 20px;
-  overflow-y: auto;
-  border-right: 5px dashed #ff69b4;
-  border-radius: 0 15px 15px 0;
-  box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+    width: 35%;
+    background: #fdfd96;
+    padding: 20px;
+    overflow-y: auto;
+    border-right: 5px dashed #ff69b4;
+    border-radius: 0 15px 15px 0;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
 }
 
 /* Left panel header centered */
 #hadith-panel h2 {
-  font-size: 28px;
-  margin-bottom: 20px;
-  text-align: center; /* Center the header */
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 /* Left panel Hadith text left-justified */
 #hadith-panel p {
-  text-align: left;    /* Left justify Hadith text */
-  font-size: 22px;     /* Larger font for readability */
-  line-height: 1.8;    /* Better spacing */
+    text-align: left;
+    font-size: 22px;
+    line-height: 1.8;
 }
 
 /* Story / Quiz panel (right) */
 #story-panel {
-  width: 65%;
-  padding: 20px;
-  overflow-y: auto;
-  background: #ffebcd;
-  border-left: 5px dashed #ff69b4;
-  border-radius: 15px 0 0 15px;
-  box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
-  text-align: center; /* Center headers/buttons */
+    width: 65%;
+    padding: 20px;
+    overflow-y: auto;
+    background: #ffebcd;
+    border-left: 5px dashed #ff69b4;
+    border-radius: 15px 0 0 15px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+    text-align: center;
 }
 
 #story-panel h2 {
-  text-align: center;
+    text-align: center;
 }
 
 /* Buttons row */
 .btn-row {
-  margin-top: 20px;
-  text-align: center; /* Center buttons */
+    margin-top: 20px;
+    text-align: center;
 }
 
 .btn-row button {
-  padding: 10px 20px;
-  margin: 5px;
-  font-size: 16px;
-  background: #ffb347;
-  border: 2px solid #ff69b4;
-  border-radius: 15px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: transform 0.2s, background 0.3s;
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    background: #ffb347;
+    border: 2px solid #ff69b4;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s, background 0.3s;
 }
 
 .btn-row button:hover {
-  background: #ff69b4;
-  transform: scale(1.1);
-  color: #fff;
+    background: #ff69b4;
+    transform: scale(1.1);
+    color: #fff;
 }
 
 /* ---------------- HOMEPAGE ---------------- */
+
+/* The Body is the element that scrolls */
 body.homepage-active {
-  overflow-y: auto; /* Allow scrolling on homepage */
+    overflow-y: auto; 
+    height: auto;
+    
+    /* Overrides the home.jpeg background with the gradient for the app view */
+    background-image: linear-gradient(120deg, #ffccff, #ccffff); 
+    background-attachment: scroll; /* Allow background to scroll with content */
+    background-size: auto;
 }
 
+/* The Container must not restrict height when active */
 body.homepage-active .container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start; /* Align top so scrolling works */
-  min-height: 100vh;
-  padding: 40px 0;
+    display: block; 
+    height: auto; 
+    min-height: auto;
+    overflow: visible; 
+    
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 0;
 }
+
 
 body.homepage-active #hadith-panel {
-  display: none;
+    display: none;
 }
 
+/* The Story Panel must also not restrict height */
 body.homepage-active #story-panel {
-  width: 90%;
-  max-width: 1200px;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  overflow: visible;
+    width: 90%;
+    max-width: 1200px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    overflow: visible; 
+    height: auto; 
+    min-height: auto; 
 }
 
 /* Grid for story tiles */
 .story-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
-  width: 100%;
-  justify-items: center;
-  padding: 20px;
+    display: grid;
+    /* Uses auto-fit/minmax for a robust, expanding grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    width: 100%;
+    justify-items: center;
+    padding: 20px;
 }
 
 .story-tile {
-  background: #ffccff;
-  border-radius: 20px;
-  padding: 10px;
-  text-align: center;
-  cursor: pointer;
-  position: relative;
-  transition: transform 0.3s, background 0.3s;
-  box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+    background: #ffccff;
+    border-radius: 20px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s, background 0.3s;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
 }
 
 .story-tile:hover {
-  transform: scale(1.05) rotate(-2deg);
-  background: #ffb3ff;
+    transform: scale(1.05) rotate(-2deg);
+    background: #ffb3ff;
 }
 
 .tile-image {
-  width: 100%;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 15px;
-  margin-bottom: 10px;
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 10px;
 }
 
 /* READ imprint */
 .read-imprint {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  background: #ff0000;
-  color: yellow;
-  padding: 5px 10px;
-  font-weight: bold;
-  border-radius: 15px;
-  font-family: 'Comic Sans MS', cursive;
-  animation: pulse 1s infinite;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: #ff0000;
+    color: yellow;
+    padding: 5px 10px;
+    font-weight: bold;
+    border-radius: 15px;
+    font-family: 'Comic Sans MS', cursive;
+    animation: pulse 1s infinite;
 }
 
 /* TEMP stamp animation */
 .stamp-temp {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  background: #ff0000;
-  color: yellow;
-  padding: 5px 10px;
-  font-weight: bold;
-  border-radius: 15px;
-  font-family: 'Comic Sans MS', cursive;
-  animation: pulse 0.7s ease;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: #ff0000;
+    color: yellow;
+    padding: 5px 10px;
+    font-weight: bold;
+    border-radius: 15px;
+    font-family: 'Comic Sans MS', cursive;
+    animation: pulse 0.7s ease;
 }
 
 /* Fun pulse animation */
 @keyframes pulse {
-  0% { transform: scale(0.8); opacity: 0.6; }
-  50% { transform: scale(1.2); opacity: 1; }
-  100% { transform: scale(1); opacity: 0.8; }
+    0% { transform: scale(0.8); opacity: 0.6; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.8; }
 }
 
 /* ---------------- STORY & QUIZ ---------------- */
 .story, 
 .quiz {
-  text-align: left;   /* Left justify content */
-  font-size: 22px;    /* Larger font */
-  line-height: 1.8;
-  color: #333;
-  padding: 15px;
-  background: #fff9e6;
-  border-radius: 15px;
-  margin-bottom: 20px;
+    text-align: left;
+    font-size: 22px;
+    line-height: 1.8;
+    color: #333;
+    padding: 15px;
+    background: #fff9e6;
+    border-radius: 15px;
+    margin-bottom: 20px;
 }
 
 .story h2 {
-  font-size: 28px;
-  color: #ff69b4;
-  margin-bottom: 15px;
+    font-size: 28px;
+    color: #ff69b4;
+    margin-bottom: 15px;
 }
 
 .quiz-question {
-  font-size: 24px;
-  font-weight: bold;
-  color: #663399;
-  margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #663399;
+    margin-top: 20px;
 }
 
 .quiz-options label {
-  display: block;
-  font-size: 20px;
-  margin: 8px 0;
+    display: block;
+    font-size: 20px;
+    margin: 8px 0;
 }
 
 /* ---------------- QUIZ HEADER IN RIGHT PANEL ---------------- */
 .quiz-header {
-  font-size: 26px;
-  font-weight: bold;
-  color: #ff69b4;
-  text-align: center;
-  margin-bottom: 20px;
+    font-size: 26px;
+    font-weight: bold;
+    color: #ff69b4;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 
 /* ---------------- COVER PAGE ---------------- */
 #cover-page {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
 #cover-page img {
-  width: auto;
-  height: 80%;        /* Fill 80% of page height */
-  max-width: 90%;     /* Ensure it doesn't overflow horizontally */
-  border-radius: 20px;
-  box-shadow: 5px 5px 20px rgba(0,0,0,0.3);
-  margin-bottom: 30px; /* Space for READ button */
+    width: auto;
+    height: 80%;
+    max-width: 90%;
+    border-radius: 20px;
+    box-shadow: 5px 5px 20px rgba(0,0,0,0.3);
+    margin-bottom: 30px;
 }
 
 
 
 #cover-read-btn {
-  padding: 20px 40px;
-  font-size: 24px;
-  font-weight: bold;
-  background: #ffb347;
-  border: 3px solid #ff69b4;
-  border-radius: 20px;
-  cursor: pointer;
-  animation: pulse 1s infinite;
+    padding: 20px 40px;
+    font-size: 24px;
+    font-weight: bold;
+    background: #ffb347;
+    border: 3px solid #ff69b4;
+    border-radius: 20px;
+    cursor: pointer;
+    animation: pulse 1s infinite;
 }
 
 #cover-read-btn:hover {
-  background: #ff69b4;
-  color: #fff;
+    background: #ff69b4;
+    color: #fff;
 }
 
 
 /* ---------------- LOGIN PAGE ---------------- */
 #auth-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 25px;
-  padding: 60px 50px;
-  text-align: center;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-  width: 400px;
-  max-width: 90%;
-  font-family: 'Comic Sans MS', 'Comic Neue', Arial, sans-serif;
+    /* To ensure the white box is visible over the background image */
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 25px;
+    padding: 60px 50px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    width: 400px;
+    max-width: 90%;
+    font-family: 'Comic Sans MS', 'Comic Neue', Arial, sans-serif;
+    z-index: 10; /* Ensure it's above the background image */
 }
 
 #auth-container h2 {
-  font-size: 36px;
-  color: #ff69b4;
-  margin-bottom: 30px;
-  text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    font-size: 36px;
+    color: #ff69b4;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 }
 
 #auth-container input {
-  width: 80%;
-  padding: 15px 10px;
-  margin: 10px 0;
-  font-size: 18px;
-  border-radius: 12px;
-  border: 2px solid #ff69b4;
-  outline: none;
-  transition: all 0.3s ease;
+    width: 80%;
+    padding: 15px 10px;
+    margin: 10px 0;
+    font-size: 18px;
+    border-radius: 12px;
+    border: 2px solid #ff69b4;
+    outline: none;
+    transition: all 0.3s ease;
 }
 
 #auth-container input:focus {
-  border-color: #ffb347;
-  box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+    border-color: #ffb347;
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
 }
 
 #auth-container button {
-  width: 85%;
-  padding: 15px;
-  margin: 10px 0;
-  font-size: 20px;
-  font-weight: bold;
-  color: #fff;
-  background: linear-gradient(45deg, #ff69b4, #ffb347);
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    width: 85%;
+    padding: 15px;
+    margin: 10px 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(45deg, #ff69b4, #ffb347);
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 #auth-container button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
 /* Status message */
 #auth-status {
-  margin-top: 15px;
-  font-size: 18px;
-  color: #333;
-  font-weight: bold;
+    margin-top: 15px;
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
 }
 
 /* ---------------- LOGOUT BUTTON ---------------- */
 #logout-container {
-  position: fixed;
-  top: 15px;
-  right: 20px;
-  z-index: 100;
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    z-index: 100;
 }
 
 #logoutBtn {
-  padding: 12px 25px;
-  font-size: 18px;
-  font-weight: bold;
-  color: #fff;
-  background: linear-gradient(45deg, #ff69b4, #ffb347);
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  transition: all 0.3s ease;
+    padding: 12px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(45deg, #ff69b4, #ffb347);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
 }
 
 #logoutBtn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
 }
