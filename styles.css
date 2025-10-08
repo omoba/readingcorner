@@ -3,26 +3,33 @@ body, html {
     margin: 0;
     padding: 0;
     font-family: 'Comic Sans MS', 'Comic Neue', Arial, sans-serif;
-    height: 100%;
+    /* Must ensure height is 100% for fixed background and layout */
+    height: 100%; 
     transition: background 0.5s ease;
-    overflow-x: hidden; /* Prevents only horizontal scrollbar, allows vertical */
+    overflow-x: hidden;
 }
 
-/* --- THE LOGIN PAGE BACKGROUND IMAGE --- */
+/* ----------------------------------------------------------------------- */
+/* --- DEFAULT BACKGROUND: Applies for Login, Logout, Tiles, and Cover Page --- */
+/* ----------------------------------------------------------------------- */
 body {
-    /* Set home.jpeg as the full-screen background for the default (login) state */
     background-image: url('images/home.jpeg'); 
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    background-attachment: fixed; /* Keeps image fixed while scrolling (if any) */
+    background-attachment: fixed; 
 }
 
-/* Container for two-panel layout */
+/* ----------------------------------------------------------------------- */
+/* --- BACKGROUND OVERRIDE FOR TWO-PANEL (READING/QUIZ) VIEW --- */
+/* ----------------------------------------------------------------------- */
 .container {
     display: flex;
     height: 100vh; /* Default height for the two-panel view */
-    overflow: hidden; /* Default overflow for the two-panel view */
+    overflow: hidden; 
+    
+    /* Apply the gradient here! This covers the body background. */
+    background: linear-gradient(120deg, #ffccff, #ccffff); 
 }
 
 /* Hadith panel (left) */
@@ -54,7 +61,9 @@ body {
 #story-panel {
     width: 65%;
     padding: 20px;
-    overflow-y: auto;
+    /* FIX: Restore scroll for the two-panel view (when NOT homepage-active) */
+    overflow-y: auto; 
+    
     background: #ffebcd;
     border-left: 5px dashed #ff69b4;
     border-radius: 15px 0 0 15px;
@@ -90,57 +99,127 @@ body {
     color: #fff;
 }
 
-/* ---------------- HOMEPAGE ---------------- */
+/* ---------------- HOMEPAGE FIXES ---------------- */
 
-/* The Body is the element that scrolls */
+/* 1. PREVENT PAGE SCROLLING: Keep the body from scrolling in homepage mode */
 body.homepage-active {
-    overflow-y: auto; 
-    height: auto;
-    
-    /* Overrides the home.jpeg background with the gradient for the app view */
-    background-image: linear-gradient(120deg, #ffccff, #ccffff); 
-    background-attachment: scroll; /* Allow background to scroll with content */
-    background-size: auto;
+    overflow-y: hidden; 
+    height: 100%;
+    background-attachment: fixed;
 }
 
-/* The Container must not restrict height when active */
+/* 2. ENABLE CONTAINER VIEW: Make container display for the homepage tiles */
 body.homepage-active .container {
-    display: block; 
-    height: auto; 
-    min-height: auto;
-    overflow: visible; 
-    
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden; 
     justify-content: center;
-    align-items: flex-start;
-    padding: 40px 0;
+    align-items: center;
+    padding: 0;
+    background: transparent; 
 }
 
-
+/* 3. SHOW ONLY STORY PANEL (as the main tile area) */
 body.homepage-active #hadith-panel {
     display: none;
 }
 
-/* The Story Panel must also not restrict height */
+/* 4. SETUP STORY PANEL FOR SCROLL WRAPPER & ARROW HINT */
 body.homepage-active #story-panel {
-    width: 90%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     max-width: 1200px;
     background: transparent;
     border: none;
     box-shadow: none;
-    overflow: visible; 
-    height: auto; 
-    min-height: auto; 
+    /* CRITICAL: Must be hidden here to make the inner wrapper scrollable */
+    overflow: hidden; 
+    height: 100%; 
+    padding: 0; 
+    position: relative; /* Allows absolute positioning of hints */
 }
 
-/* Grid for story tiles */
+/* 5. THE SCROLLABLE FRAME/WRAPPER */
+.tile-scroll-wrapper {
+    flex-grow: 1; 
+    width: 100%;
+    overflow-y: auto; 
+    padding: 40px 20px; 
+    box-sizing: border-box;
+
+    /* CRITICAL: HIDE THE SCROLLBAR */
+    /* For Chrome, Safari, and Opera */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    /* For IE and Edge */
+    -ms-overflow-style: none;  
+    /* For Firefox */
+    scrollbar-width: none; 
+}
+
+/* 6. SCROLL FADE HINT STYLING */
+.scroll-fade-hint-base {
+    display: none; /* Hidden by default */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    /* Fades from solid color to transparent */
+    background: linear-gradient(to top, 
+                                rgba(255, 255, 255, 1) 0%, 
+                                rgba(255, 255, 255, 0) 100%);
+    pointer-events: none;
+    z-index: 5; /* Below the arrow, above the content */
+}
+
+/* Make the fade hint visible only when in homepage tile mode */
+body.homepage-active #story-panel .scroll-fade-hint-base {
+    display: block;
+}
+
+/* 7. PULSATING ARROW STYLING */
+.scroll-hint-arrow-base {
+    position: absolute;
+    bottom: 5px; 
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 36px;
+    color: #ff69b4; 
+    z-index: 10; /* Above the fade hint */
+    pointer-events: none;
+    opacity: 0; 
+    animation: arrow-pulse 1.5s infinite ease-in-out; 
+    animation-play-state: paused; 
+}
+
+/* 8. ARROW PULSE KEYFRAME ANIMATION */
+@keyframes arrow-pulse {
+    0% { 
+        opacity: 0;
+        transform: translateX(-50%) translateY(0);
+    }
+    55% { 
+        opacity: 1;
+        transform: translateX(-50%) translateY(5px);
+    }
+    100% { 
+        opacity: 0;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+
+/* Grid for story tiles (moved inside .tile-scroll-wrapper) */
 .story-grid {
     display: grid;
-    /* Uses auto-fit/minmax for a robust, expanding grid layout */
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
     width: 100%;
     justify-items: center;
-    padding: 20px;
+    padding: 0; 
 }
 
 .story-tile {
@@ -195,16 +274,10 @@ body.homepage-active #story-panel {
     animation: pulse 0.7s ease;
 }
 
-/* Fun pulse animation */
-@keyframes pulse {
-    0% { transform: scale(0.8); opacity: 0.6; }
-    50% { transform: scale(1.2); opacity: 1; }
-    100% { transform: scale(1); opacity: 0.8; }
-}
+
 
 /* ---------------- STORY & QUIZ ---------------- */
-.story, 
-.quiz {
+.story{
     text-align: left;
     font-size: 22px;
     line-height: 1.8;
@@ -221,17 +294,57 @@ body.homepage-active #story-panel {
     margin-bottom: 15px;
 }
 
+/* ---------------- QUIZ SPECIFIC STYLES ---------------- */
+
+/* Main quiz container style - KEEPING IT TIGHTER THAN .story */
+.quiz {
+    text-align: left;
+    font-size: 22px;
+    /* Tighter than story (1.8), but not 1.0 */
+    line-height: 1.5; 
+    color: #333;
+    padding: 15px;
+    background: #fff9e6;
+    border-radius: 15px;
+    margin-bottom: 20px; /* Use standard bottom margin for the whole block */
+}
+
+/* Target the container for each question block */
+.quiz .question-block {
+    /* FIX: This controls the clean, visible space between Question N and Question N+1 */
+    margin-bottom: 20px; 
+}
+
 .quiz-question {
     font-size: 24px;
     font-weight: bold;
     color: #663399;
-    margin-top: 20px;
+    margin-top: 5px; 
+    /* FIX: Separation between Question and Options */
+    margin-bottom: 10px; 
+}
+
+/* Option wrapper styling */
+.quiz-options {
+    padding: 0 10px; 
+    margin-bottom: 0;
 }
 
 .quiz-options label {
-    display: block;
+    display: block; 
     font-size: 20px;
-    margin: 8px 0;
+    /* FIX: The key fix for vertical space between individual options (8px top/bottom) */
+    margin: 8px 0; 
+    /* FIX: Prevents text overlap and makes it readable */
+    line-height: 1.2; 
+}
+
+/* Style for the feedback text */
+.quiz .feedback {
+    margin-top: 5px;
+    /* FIX: Small space before the next question block starts */
+    margin-bottom: 5px; 
+    font-size: 18px;
 }
 
 /* ---------------- QUIZ HEADER IN RIGHT PANEL ---------------- */
@@ -240,9 +353,8 @@ body.homepage-active #story-panel {
     font-weight: bold;
     color: #ff69b4;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px; /* Added a clean margin below the header */
 }
-
 
 /* ---------------- COVER PAGE ---------------- */
 #cover-page {
@@ -251,7 +363,7 @@ body.homepage-active #story-panel {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #fff;
+    background: #fff; 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -289,7 +401,6 @@ body.homepage-active #story-panel {
 
 /* ---------------- LOGIN PAGE ---------------- */
 #auth-container {
-    /* To ensure the white box is visible over the background image */
     position: absolute; 
     top: 50%;
     left: 50%;
@@ -302,7 +413,7 @@ body.homepage-active #story-panel {
     width: 400px;
     max-width: 90%;
     font-family: 'Comic Sans MS', 'Comic Neue', Arial, sans-serif;
-    z-index: 10; /* Ensure it's above the background image */
+    z-index: 10; 
 }
 
 #auth-container h2 {

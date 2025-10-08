@@ -59,16 +59,22 @@ document.getElementById("registerBtn").addEventListener("click", async () => {
 // Logout
 logoutBtn.addEventListener("click", async () => {
   await signOut(auth);
+  // Clear last state memory
+  localStorage.removeItem("lastPage");
+  localStorage.removeItem("lastStoryId");
 });
 
 // Monitor Login State
 onAuthStateChanged(auth, (user) => {
   if (user) {
+    console.log("👤 Logged in user:", user.email);
     authContainer.style.display = "none";
     appContainer.style.display = "flex";
     logoutContainer.style.display = "block";
     initializeAppContent(user.uid);
   } else {
+    // Logged out
+    document.body.classList.remove("homepage-active");
     authContainer.style.display = "block";
     appContainer.style.display = "none";
     logoutContainer.style.display = "none";
@@ -77,7 +83,6 @@ onAuthStateChanged(auth, (user) => {
 
 // ==================== MAIN APP SECTION ====================
 function initializeAppContent(userId) {
-  let currentStoryIndex = null;
   let stories = [];
   let hadiths = [];
   let quizzes = [];
@@ -85,26 +90,79 @@ function initializeAppContent(userId) {
 
   const storyPanel = document.getElementById("story-panel");
   const hadithPanel = document.getElementById("hadith-panel");
+  const tileScrollWrapper = document.querySelector(".tile-scroll-wrapper");
+  const scrollHintArrow = document.getElementById("scroll-hint-arrow");
+  const scrollFadeHint = document.getElementById("scroll-fade-hint");
+  let arrowInterval = null;
 
-  fetch("stories.json")
-    .then(res => res.json())
-    .then(data => {
-      stories = data.stories;
-      hadiths = data.hadith;
-      loadHomepage();
-    });
+  // --- SCROLL HINT LOGIC ---
+  function setScrollHints(show) {
+    if (show) {
+      scrollHintArrow.style.display = "block";
+      scrollHintArrow.style.animationPlayState = "running";
+    } else {
+      scrollHintArrow.style.display = "none";
+      scrollHintArrow.style.animationPlayState = "paused";
+      scrollFadeHint.style.display = "none";
+    }
+  }
 
-  fetch("quiz.json")
-    .then(res => res.json())
-    .then(data => {
-      quizzes = data;
-    });
+  function checkScrollPosition() {
+    if (!document.body.classList.contains("homepage-active")) return;
+    const isScrollable = tileScrollWrapper.scrollHeight > tileScrollWrapper.clientHeight;
+    const isScrolledToBottom = (tileScrollWrapper.scrollTop + tileScrollWrapper.clientHeight) >= (tileScrollWrapper.scrollHeight - 5);
+    if (isScrollable && !isScrolledToBottom) scrollFadeHint.style.display = "block";
+    else scrollFadeHint.style.display = "none";
+  }
+
+  function startArrowHint() {
+    stopArrowHint();
+    const isScrollable = tileScrollWrapper.scrollHeight > tileScrollWrapper.clientHeight;
+    if (isScrollable) {
+      if (tileScrollWrapper.scrollTop <= 5) setScrollHints(true);
+      arrowInterval = setInterval(() => {
+        const isScrolledToBottom = (tileScrollWrapper.scrollTop + tileScrollWrapper.clientHeight) >= (tileScrollWrapper.scrollHeight - 5);
+        if (!isScrolledToBottom) setScrollHints(true);
+        else setScrollHints(false);
+      }, 5000);
+    }
+  }
+
+  function stopArrowHint() {
+    if (arrowInterval) clearInterval(arrowInterval);
+    scrollHintArrow.style.display = "none";
+    scrollHintArrow.style.animationPlayState = "paused";
+  }
+
+  tileScrollWrapper.addEventListener("scroll", () => {
+    stopArrowHint();
+    checkScrollPosition();
+    startArrowHint();
+  });
+
+  // ------------------ FETCH DATA ------------------
+  Promise.all([
+    fetch("stories.json").then(res => res.json()),
+    fetch("quiz.json").then(res => res.json())
+  ]).then(([storyData, quizData]) => {
+    stories = storyData.stories;
+    hadiths = storyData.hadith;
+    quizzes = quizData;
+
+    // ALWAYS GO TO HOMEPAGE after login or refresh
+    loadHomepage();
+  });
 
   // ------------------ HOMEPAGE ------------------
   function loadHomepage() {
+    console.log("🏠 Loading homepage");
     document.body.classList.add("homepage-active");
     hadithPanel.style.display = "none";
+    storyPanel.style.display = "flex";
+
     storyPanel.innerHTML = "";
+    tileScrollWrapper.innerHTML = "";
+    tileScrollWrapper.style.display = "block";
 
     const grid = document.createElement("div");
     grid.classList.add("story-grid");
@@ -128,43 +186,57 @@ function initializeAppContent(userId) {
       }
 
       tile.addEventListener("click", () => {
-        const coverPage = document.getElementById("cover-page");
-        const coverImage = document.getElementById("cover-image");
-        coverImage.src = `images/${story.title}.jpeg`;
-        coverPage.style.display = "flex";
-
-        document.body.classList.add("homepage-active");
-        storyPanel.style.display = "none";
-        hadithPanel.style.display = "none";
-
-        const readBtn = document.getElementById("cover-read-btn");
-        readBtn.replaceWith(readBtn.cloneNode(true));
-        const newReadBtn = document.getElementById("cover-read-btn");
-
-        newReadBtn.addEventListener("click", () => {
-          coverPage.style.display = "none";
-          storyPanel.style.display = "block";
-          hadithPanel.style.display = "block";
-          loadStory(idx);
-        });
+        localStorage.setItem("lastPage", "cover");
+        localStorage.setItem("lastStoryId", idx);
+        showCoverPage(idx);
       });
 
       grid.appendChild(tile);
     });
 
-    storyPanel.appendChild(grid);
+    tileScrollWrapper.appendChild(grid);
+    storyPanel.appendChild(tileScrollWrapper);
+
+    setTimeout(() => {
+      checkScrollPosition();
+      startArrowHint();
+    }, 50);
+
+    // Save homepage as last page
+    localStorage.setItem("lastPage", "homepage");
+  }
+
+  // ------------------ COVER PAGE ------------------
+  function showCoverPage(idx) {
+    const story = stories[idx];
+    const coverPage = document.getElementById("cover-page");
+    const coverImage = document.getElementById("cover-image");
+    coverImage.src = `images/${story.title}.jpeg`;
+    coverPage.style.display = "flex";
+
+    const readBtn = document.getElementById("cover-read-btn");
+    readBtn.replaceWith(readBtn.cloneNode(true));
+    const newReadBtn = document.getElementById("cover-read-btn");
+
+    newReadBtn.addEventListener("click", () => {
+      coverPage.style.display = "none";
+      loadStory(idx);
+    });
   }
 
   // ------------------ STORY PAGE ------------------
   function loadStory(index) {
-    currentStoryIndex = index;
+    localStorage.setItem("lastPage", "story");
+    localStorage.setItem("lastStoryId", index);
+
     document.body.classList.remove("homepage-active");
-    hadithPanel.style.display = "block";
+    tileScrollWrapper.style.display = "none";
     storyPanel.innerHTML = "";
+    hadithPanel.style.display = "block";
+    storyPanel.style.display = "block";
 
     const story = stories[index];
     const hadith = hadiths[story.hadithIndex];
-
     hadithPanel.innerHTML = `<h2>Hadith</h2><p>${hadith.text}</p>`;
 
     const storyDiv = document.createElement("div");
@@ -180,26 +252,21 @@ function initializeAppContent(userId) {
     storyPanel.appendChild(storyDiv);
 
     document.getElementById("doneBtn").addEventListener("click", () => {
-      displayStoryLeftPanel(story);
       loadQuiz(index);
     });
-
     document.getElementById("homeBtn").addEventListener("click", () => {
       loadHomepage();
     });
   }
 
-  // ------------------ DISPLAY STORY IN LEFT PANEL ------------------
-  function displayStoryLeftPanel(story) {
-    hadithPanel.innerHTML = `
-      <h2>${story.title}</h2>
-      ${story.text}
-    `;
-  }
-
   // ------------------ QUIZ PAGE ------------------
   function loadQuiz(storyId) {
+    localStorage.setItem("lastPage", "quiz");
+    localStorage.setItem("lastStoryId", storyId);
+
     storyPanel.innerHTML = "";
+    tileScrollWrapper.style.display = "none";
+
     const quiz = quizzes.find(q => q.storyId === storyId);
     if (!quiz) {
       storyPanel.innerHTML = "<p>No quiz available for this story.</p>";
@@ -215,25 +282,20 @@ function initializeAppContent(userId) {
     quizDiv.classList.add("quiz");
 
     quiz.questions.forEach((q, idx) => {
-      const questionBlock = document.createElement("div");
-      questionBlock.classList.add("question-block");
-
-      let optionsHTML = "";
+      const block = document.createElement("div");
+      block.classList.add("question-block");
+      let opts = "";
       q.options.forEach(opt => {
-        optionsHTML += `
-          <label>
-            <input type="radio" name="q${idx}" value="${opt}">
-            ${opt}
-          </label><br>
+        opts += `
+          <label><input type="radio" name="q${idx}" value="${opt}">${opt}</label>
         `;
       });
-
-      questionBlock.innerHTML = `
-        <p><strong>${idx + 1}. ${q.question}</strong></p>
-        ${optionsHTML}
+      block.innerHTML = `
+        <p class="quiz-question">${idx + 1}. ${q.question}</p>
+        <div class="quiz-options">${opts}</div>
         <p class="feedback" style="font-weight:bold;"></p>
       `;
-      quizDiv.appendChild(questionBlock);
+      quizDiv.appendChild(block);
     });
 
     const btnRow = document.createElement("div");
@@ -253,11 +315,10 @@ function initializeAppContent(userId) {
       quiz.questions.forEach((q, idx) => {
         const selected = quizDiv.querySelector(`input[name="q${idx}"]:checked`);
         const feedback = quizDiv.querySelectorAll(".feedback")[idx];
-
         if (selected) {
           if (selected.value === q.answer) {
             score++;
-            feedback.textContent = "Correct!";
+            feedback.textContent = "Correct! 🎉";
             feedback.style.color = "green";
           } else {
             feedback.textContent = `Incorrect! Correct: ${q.answer}`;
@@ -268,14 +329,13 @@ function initializeAppContent(userId) {
           feedback.style.color = "red";
         }
       });
-      scoreDisplay.textContent = `You scored ${score} out of ${quiz.questions.length}`;
+      scoreDisplay.textContent = `You scored ${score} / ${quiz.questions.length}`;
     });
 
     homeBtn.addEventListener("click", () => {
       completedStories.add(storyId);
       localStorage.setItem(`completedStories_${userId}`, JSON.stringify([...completedStories]));
       loadHomepage();
-      animateReadStamp(storyId);
     });
 
     btnRow.appendChild(submitBtn);
@@ -283,27 +343,5 @@ function initializeAppContent(userId) {
     quizDiv.appendChild(btnRow);
     quizDiv.appendChild(scoreDisplay);
     storyPanel.appendChild(quizDiv);
-  }
-
-  // ------------------ "READ" STAMP ------------------
-  function animateReadStamp(storyId) {
-    const tile = document.querySelector(`.story-tile[data-index='${storyId}']`);
-    if (tile) {
-      let stampImprint = tile.querySelector(".read-imprint");
-      if (!stampImprint) {
-        const tempStamp = document.createElement("div");
-        tempStamp.classList.add("stamp-temp");
-        tempStamp.textContent = "READ";
-        tile.appendChild(tempStamp);
-
-        setTimeout(() => {
-          tempStamp.remove();
-          stampImprint = document.createElement("div");
-          stampImprint.classList.add("read-imprint");
-          stampImprint.textContent = "READ";
-          tile.appendChild(stampImprint);
-        }, 700);
-      }
-    }
   }
 }
