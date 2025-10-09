@@ -492,3 +492,19 @@ body.homepage-active #story-panel .scroll-fade-hint-base {
     transform: scale(1.1);
     box-shadow: 0 8px 25px rgba(0,0,0,0.3);
 }
+
+
+/* Disable text selection for story and hadith panels */
+#story-panel,
+#hadith-panel {
+  user-select: none; /* Standard */
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE/Edge */
+}
+
+/* Optional: disable context menu (right-click) */
+#story-panel,
+#hadith-panel {
+  -webkit-touch-callout: none; /* iOS Safari */
+}
