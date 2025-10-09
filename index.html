@@ -1,44 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hadith Story App</title>
-  <link rel="stylesheet" href="styles.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hadith Story App</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Hide body by default to prevent login flash on F5 */
+    body {
+      visibility: hidden;
+    }
+  </style>
 </head>
 <body>
-    <div id="auth-container">
-    <h2>Login or Register</h2>
-    <input type="email" id="email" placeholder="Email"><br>
-    <input type="password" id="password" placeholder="Password"><br>
-    <button id="loginBtn">Login</button>
-    <button id="registerBtn">Register</button>
-    <p id="auth-status"></p>
-  </div>
-
-    <div id="logout-container" style="display:none; text-align:right; margin:10px;">
-    <button id="logoutBtn">Logout</button>
-  </div>
-
-    <div class="container" style="display:none;">
-    <div id="hadith-panel"></div>
-    <div id="story-panel">
-        
-        <div id="scroll-hint-arrow" class="scroll-hint-arrow-base">&#x25BC;</div> 
-        <div id="scroll-fade-hint" class="scroll-fade-hint-base"></div>
-
-        <div class="tile-scroll-wrapper">
-            </div>
+    <div id="auth-container">
+      <h2>Login or Register</h2>
+      <input type="email" id="email" placeholder="Email"><br>
+      <input type="password" id="password" placeholder="Password"><br>
+      <button id="loginBtn">Login</button>
+      <button id="registerBtn">Register</button>
+      <p id="auth-status"></p>
     </div>
-  </div>
 
-    <div id="cover-page" style="display:none; text-align:center;">
-    <img id="cover-image" src="" alt="Story Cover" style="max-width:80%; height:auto;" />
-    <br>
-    <button id="cover-read-btn">READ</button>
-  </div>
+    <div id="logout-container" style="display:none; text-align:right; margin:10px;">
+      <button id="logoutBtn">Logout</button>
+    </div>
 
-    <script type="module" src="script.js"></script>
+    <div class="container" style="display:none;">
+      <div id="hadith-panel"></div>
+      <div id="story-panel">
+          <div id="scroll-hint-arrow" class="scroll-hint-arrow-base">&#x25BC;</div> 
+          <div id="scroll-fade-hint" class="scroll-fade-hint-base"></div>
+          <div class="tile-scroll-wrapper"></div>
+      </div>
+    </div>
+
+    <div id="cover-page" style="display:none; text-align:center;">
+      <img id="cover-image" src="" alt="Story Cover" style="max-width:80%; height:auto;" />
+      <br>
+      <button id="cover-read-btn">READ</button>
+    </div>
+
+    <script type="module" src="script.js"></script>
 </body>
 </html>
