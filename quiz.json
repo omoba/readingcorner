@@ -2,16 +2,16 @@
   {
     "storyId": 0,
     "questions": [
-      {"question": "Where were Amir and Amirah camping?", "options": ["By the forest", "Near a river", "In the city", "At the beach"], "answer": "Near a river"},
-      {"question": "What did Amir do carelessly?", "options": ["Spilled water", "Forgot his bag", "Dropped his food", "Lost his shoes"], "answer": "Spilled water"},
-      {"question": "Who reminded Amir about wasting water?", "options": ["His mother", "Amirah", "Teacher Fatima", "His father"], "answer": "Amirah"},
-      {"question": "What hadith did Amirah recall?", "options": ["Do not waste water", "Speak the truth", "Pray on time", "Be kind to animals"], "answer": "Do not waste water"},
-      {"question": "How did Amir react after being reminded?", "options": ["Ignored it", "Stopped wasting water", "Left the river", "Got angry"], "answer": "Stopped wasting water"},
-      {"question": "What lesson did Amir learn?", "options": ["Water is precious", "Play more games", "Camping is fun", "Rivers are deep"], "answer": "Water is precious"},
-      {"question": "Why should water not be wasted?", "options": ["It is expensive", "It is a blessing from Allah", "It is easy to find", "It is heavy to carry"], "answer": "It is a blessing from Allah"},
-      {"question": "When should water be used carefully?", "options": ["Only at home", "Even by a flowing river", "Only at school", "Only in summer"], "answer": "Even by a flowing river"},
-      {"question": "What feeling did Amir have in the evening?", "options": ["Sadness", "Embarrassment and reflection", "Excitement", "Hunger"], "answer": "Embarrassment and reflection"},
-      {"question": "Who praised Amir and Amirah?", "options": ["Their teacher", "Their mother", "Their friend", "Their neighbor"], "answer": "Their mother"}
+      {"question": "Who were the two best friends in the story?", "options": ["Amir and Hassan", "Hasan and Bilal", "Ali and Omar", "Ahmed and Yusuf"], "answer": "Hasan and Bilal"},
+      {"question": "What sport were they playing when they had their disagreement?", "options": ["Basketball", "Tennis", "Soccer", "Cricket"], "answer": "Soccer"},
+      {"question": "What caused their big argument?", "options": ["A foul in the game", "Lost homework", "Broken toy", "Missing lunch"], "answer": "A foul in the game"},
+      {"question": "How many days did they not speak to each other?", "options": ["Two days", "Three days", "Four days", "One week"], "answer": "Four days"},
+      {"question": "According to the Prophet's teaching, how long is too long to not speak to someone?", "options": ["More than one day", "More than two days", "More than three days", "More than a week"], "answer": "More than three days"},
+      {"question": "Who was the first to say 'Salām' and make peace?", "options": ["Hasan", "Bilal", "Their teacher", "Their parents"], "answer": "Bilal"},
+      {"question": "What did Bilal say to make peace?", "options": ["I'm sorry", "As-salamu alaykum", "Let's be friends", "Forgive me"], "answer": "As-salamu alaykum"},
+      {"question": "Where did Bilal approach Hasan to make peace?", "options": ["In the classroom", "At the soccer field", "By the main gate", "In the cafeteria"], "answer": "By the main gate"},
+      {"question": "What did their teacher Mr. Ahmed say about their reconciliation?", "options": ["Good job", "MashaAllah, you learned a beautiful lesson", "Finally", "I'm proud of you"], "answer": "MashaAllah, you learned a beautiful lesson"},
+      {"question": "What did the boys promise after making peace?", "options": ["To play better soccer", "To study harder", "Never to let small arguments ruin their friendship", "To tell their parents"], "answer": "Never to let small arguments ruin their friendship"}
     ]
   },
   {
