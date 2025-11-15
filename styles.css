@@ -9,6 +9,185 @@ body, html {
     overflow-x: hidden;
 }
 
+/* ---------------- MOBILE RESPONSIVE DESIGN ---------------- */
+@media (max-width: 768px) {
+  body, html {
+    font-size: 18px;
+  }
+  
+  /* Larger text for mobile */
+  .story {
+    font-size: 24px !important;
+    line-height: 2.0 !important;
+    padding: 20px !important;
+  }
+  
+  .story h2 {
+    font-size: 32px !important;
+  }
+  
+  /* Larger quiz text */
+  .quiz {
+    font-size: 24px !important;
+    line-height: 1.8 !important;
+    padding: 20px !important;
+  }
+  
+  .quiz-question {
+    font-size: 28px !important;
+    margin-bottom: 15px !important;
+  }
+  
+  .quiz-options label {
+    font-size: 24px !important;
+    margin: 12px 0 !important;
+    line-height: 1.4 !important;
+  }
+  
+  /* Larger buttons */
+  .btn-row button {
+    padding: 15px 25px !important;
+    font-size: 20px !important;
+    margin: 8px !important;
+  }
+  
+  /* Larger Kahoot quiz elements */
+  .question-text {
+    font-size: 2.2em !important;
+    padding: 0 20px !important;
+  }
+  
+  .answer-btn {
+    padding: 30px 25px !important;
+    font-size: 1.4em !important;
+    min-height: 100px !important;
+  }
+  
+  .quiz-header {
+    font-size: 1.3em !important;
+    margin-bottom: 40px !important;
+  }
+  
+  .timer-circle {
+    width: 100px !important;
+    height: 100px !important;
+    font-size: 2.5em !important;
+  }
+  
+  .feedback {
+    font-size: 1.5em !important;
+    padding: 15px 30px !important;
+  }
+  
+  /* Larger login elements */
+  #auth-container {
+    padding: 40px 30px !important;
+    width: 90% !important;
+  }
+  
+  #auth-container h2 {
+    font-size: 42px !important;
+  }
+  
+  #auth-container input {
+    font-size: 22px !important;
+    padding: 18px 15px !important;
+  }
+  
+  #auth-container button {
+    font-size: 24px !important;
+    padding: 18px !important;
+  }
+  
+  /* Larger story tiles */
+  .story-tile {
+    width: 250px !important;
+    min-height: 300px !important;
+  }
+  
+  .story-tile h3 {
+    font-size: 22px !important;
+  }
+  
+  .tile-image {
+    height: 150px !important;
+  }
+  
+  /* Larger hadith panel text */
+  #hadith-panel h2 {
+    font-size: 32px !important;
+  }
+  
+  #hadith-panel p {
+    font-size: 26px !important;
+    line-height: 2.0 !important;
+  }
+  
+  /* Larger story panel text */
+  #story-panel h2 {
+    font-size: 32px !important;
+  }
+  
+  /* Larger logout button */
+  #logoutBtn {
+    padding: 15px 30px !important;
+    font-size: 22px !important;
+  }
+  
+  /* Larger cover page elements */
+  #cover-read-btn {
+    padding: 25px 50px !important;
+    font-size: 28px !important;
+  }
+  
+  /* Adjust quiz start screen */
+  .quiz-start-screen h2 {
+    font-size: 3.5em !important;
+  }
+  
+  .quiz-info {
+    font-size: 1.5em !important;
+  }
+  
+  .mode-btn {
+    padding: 30px 35px !important;
+    font-size: 1.4em !important;
+    min-width: 250px !important;
+  }
+  
+  .start-quiz-btn {
+    padding: 25px 60px !important;
+    font-size: 1.8em !important;
+  }
+  
+  /* Adjust quiz results */
+  .quiz-results h2 {
+    font-size: 3.5em !important;
+  }
+  
+  .final-score {
+    font-size: 6em !important;
+  }
+  
+  .stat-value {
+    font-size: 3em !important;
+  }
+  
+  .stat-label {
+    font-size: 1.4em !important;
+  }
+  
+  .home-btn {
+    padding: 18px 50px !important;
+    font-size: 1.5em !important;
+  }
+  
+  .next-btn {
+    padding: 15px 40px !important;
+    font-size: 1.4em !important;
+  }
+}
+
 /* ----------------------------------------------------------------------- */
 /* --- DEFAULT BACKGROUND: Applies for Login, Logout, Tiles, and Cover Page --- */
 /* ----------------------------------------------------------------------- */
@@ -565,6 +744,15 @@ body.homepage-active #story-panel .scroll-fade-hint-base {
   margin-bottom: 30px;
 }
 
+/* Mobile-friendly single column layout for quiz answers */
+@media (max-width: 768px) {
+  .answer-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+}
+
 .answer-btn {
   border: none;
   border-radius: 15px;
@@ -582,6 +770,8 @@ body.homepage-active #story-panel .scroll-fade-hint-base {
   min-height: 80px;
   position: relative;
   z-index: 1;
+  text-align: center;
+  word-wrap: break-word;
 }
 
 .answer-btn:hover {
